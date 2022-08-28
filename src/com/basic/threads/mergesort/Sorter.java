@@ -1,4 +1,4 @@
-package mergesort;
+package com.basic.threads.mergesort;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,9 +60,5 @@ public class Sorter implements Callable<List<Integer>> {
         return answer;
     }
 
-    private List<Integer> sort(List<Integer> list) {
 
-
-        return null;
-    }
 }

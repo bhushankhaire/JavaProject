@@ -1,11 +1,11 @@
-package com.bhushan;
+package com.basic.threads;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ThreadExecutor {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args)  {
 
         System.out.println("Hello World " + Thread.currentThread().getName());
         // Assignment: Print hello world using separate thread

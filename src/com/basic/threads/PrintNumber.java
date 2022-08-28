@@ -1,4 +1,4 @@
-package com.bhushan;
+package com.basic.threads;
 
 public class PrintNumber implements Runnable {
     private int number;
