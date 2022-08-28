@@ -22,7 +22,7 @@ public class PredicateExamples {
         //predicate chaining
         boolean result = greaterThanTen.and(lowerThanTwenty).test(i);
         System.out.println("i is greater then 10 and less then 20: " + result);
-        // Calling Predicate method
+        // Calling negate Predicate method
         boolean result2 = greaterThanTen.and(lowerThanTwenty).negate().test(15);
         System.out.println(result2);
         //Calling predicate on List
