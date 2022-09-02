@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class CustomSemaphoreNewExample {
-    static CustomSemaphoreNew semaphore = new CustomSemaphoreNew(1);
+    static CustomSemaphoreNew semaphore = new CustomSemaphoreNew(2);
 
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
