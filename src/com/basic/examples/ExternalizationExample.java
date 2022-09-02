@@ -8,21 +8,22 @@ public class ExternalizationExample {
 
     public static void main(String[] args) throws IOException {
 
-        MyExternalizable myExternalizable=new MyExternalizable(10,"Bhushan","Bhushan is a good boy");
+        MyExternalizable myExternalizable = new MyExternalizable(10, "Bhushan", "Bhushan is a good boy");
        /* myExternalizable.setId(10);
         myExternalizable.setName("Bhushan");
         myExternalizable.setData("Bhushan is a good boy");*/
         writeToFile(myExternalizable);
 
 
-        MyExternalizable myExternalizable2=readFromFile();
+        MyExternalizable myExternalizable2 = readFromFile();
         System.out.println(myExternalizable2);
 
     }
 
     private static void writeToFile(MyExternalizable myExternalizable) throws IOException {
 
-        try (FileOutputStream fileOutputStream = new FileOutputStream("DataFile.ser");ObjectOutputStream objectOutputStream= new ObjectOutputStream(fileOutputStream)){
+        try (FileOutputStream fileOutputStream = new FileOutputStream("DataFile.ser");
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             objectOutputStream.writeObject(myExternalizable);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -38,7 +39,7 @@ public class ExternalizationExample {
             //Deserialize from file
             FileInputStream fileInputStream = new FileInputStream("DataFile.ser");
             objectInputStream = new ObjectInputStream(fileInputStream);
-            myExternalizable =(MyExternalizable) objectInputStream.readObject();
+            myExternalizable = (MyExternalizable) objectInputStream.readObject();
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

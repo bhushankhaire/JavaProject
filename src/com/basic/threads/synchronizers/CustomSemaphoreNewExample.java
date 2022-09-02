@@ -2,10 +2,9 @@ package com.basic.threads.synchronizers;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
 
-public class CustomSemaphoreExample {
-    static CustomSemaphore semaphore = new CustomSemaphore(3);
+public class CustomSemaphoreNewExample {
+    static CustomSemaphoreNew semaphore = new CustomSemaphoreNew(1);
 
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
