@@ -1,33 +1,32 @@
-package com.basic.design.patterns;
+package com.basic.design.patterns.creational;
 
 import java.io.Serializable;
-import java.util.SimpleTimeZone;
 
-public class SingletonExample implements Serializable,Cloneable {
+public class SingletonPattern implements Serializable,Cloneable {
 
-    private volatile static SingletonExample instance;
+    private volatile static SingletonPattern instance;
     private int i;
-    private SingletonExample() {
+    private SingletonPattern() {
         if (instance != null) {
             throw  new RuntimeException("Invalid usage");
         }
     }
 
-    public static SingletonExample getInstance() {
+    public static SingletonPattern getInstance() {
         //single check
         if (instance == null) {
             //thread safe
-            synchronized (SingletonExample.class) {
+            synchronized (SingletonPattern.class) {
                 //Double check
                 if (instance == null) {
-                    instance = new SingletonExample();
+                    instance = new SingletonPattern();
                 }
             }
         }
         return instance;
     }
 
-    public SingletonExample clone() throws CloneNotSupportedException {
+    public SingletonPattern clone() throws CloneNotSupportedException {
         throw  new CloneNotSupportedException();
     }
 

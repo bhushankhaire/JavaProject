@@ -1,4 +1,4 @@
-package com.basic.design.patterns;
+package com.basic.design.patterns.creational;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
@@ -10,23 +10,23 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class SingletonMain {
-    static SingletonExample instanceOne=SingletonExample.getInstance();
+    static SingletonPattern instanceOne= SingletonPattern.getInstance();
     public static void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, CloneNotSupportedException {
 
         Thread t1=new Thread( ()->{
-            SingletonExample singletonExample=SingletonExample.getInstance();
-            update(singletonExample);
-            System.out.println(singletonExample.getI() +" "+singletonExample.hashCode());
+            SingletonPattern singletonPattern = SingletonPattern.getInstance();
+            update(singletonPattern);
+            System.out.println(singletonPattern.getI() +" "+ singletonPattern.hashCode());
         });
         Thread t2=new Thread( ()->{
-            SingletonExample singletonExample=SingletonExample.getInstance();
-            update(singletonExample);
-            System.out.println(singletonExample.getI() +" "+singletonExample.hashCode());
+            SingletonPattern singletonPattern = SingletonPattern.getInstance();
+            update(singletonPattern);
+            System.out.println(singletonPattern.getI() +" "+ singletonPattern.hashCode());
         });
         Thread t3=new Thread( ()->{
-            SingletonExample singletonExample=SingletonExample.getInstance();
-            update(singletonExample);
-            System.out.println(singletonExample.getI() +" "+singletonExample.hashCode());
+            SingletonPattern singletonPattern = SingletonPattern.getInstance();
+            update(singletonPattern);
+            System.out.println(singletonPattern.getI() +" "+ singletonPattern.hashCode());
         });
         List<Thread> tList= new ArrayList<>();
         tList.add(t1);
@@ -40,7 +40,7 @@ public class SingletonMain {
         ((ExecutorService) executor).shutdown();
         breakSingletonUsingSerializable();
         breakSingletonUsingReflection();
-        SingletonExample instanceTwo = (SingletonExample) instanceOne.clone();
+        SingletonPattern instanceTwo = (SingletonPattern) instanceOne.clone();
         System.out.println("hashCode of instance 1 - " + instanceOne.hashCode());
         System.out.println("hashCode of instance 2 - " + instanceTwo.hashCode());
     }
@@ -57,21 +57,21 @@ public class SingletonMain {
         // Serialize to a file
         ObjectInput in = new ObjectInputStream(new FileInputStream(
                 "filename.ser"));
-        SingletonExample instanceTwo = (SingletonExample) in.readObject();
+        SingletonPattern instanceTwo = (SingletonPattern) in.readObject();
         in.close();
 
         System.out.println(instanceOne.getI() +" "+instanceOne.hashCode());
         System.out.println(instanceTwo.getI() +" "+instanceTwo.hashCode());
     }
     private static void breakSingletonUsingReflection() throws IOException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        SingletonExample instanceTwo = null;
+        SingletonPattern instanceTwo = null;
         Constructor[] constructors =
-                SingletonExample.class.getDeclaredConstructors();
+                SingletonPattern.class.getDeclaredConstructors();
         for (Constructor constructor : constructors)
         {
             // Below code will destroy the singleton pattern
             constructor.setAccessible(true);
-            instanceTwo = (SingletonExample) constructor.newInstance();
+            instanceTwo = (SingletonPattern) constructor.newInstance();
             break;
         }
 
@@ -79,8 +79,8 @@ public class SingletonMain {
         System.out.println(instanceTwo.getI() +" "+instanceTwo.hashCode());
     }
 
-    private static synchronized void update(SingletonExample singletonExample) {
-        singletonExample.setI(singletonExample.getI()+1);
+    private static synchronized void update(SingletonPattern singletonPattern) {
+        singletonPattern.setI(singletonPattern.getI()+1);
 
     }
 }
